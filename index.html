@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>StockLab | Painel de estoque</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">S<span class="brand-dot">.</span></span><div><strong>StockLab</strong><small>Gestão simplificada</small></div></div>
+      <p class="nav-caption">ESPAÇO DE TRABALHO</p>
+      <nav aria-label="Menu principal" class="navigation">
+        <button class="nav-link active" data-tab="inicio"><span>▦</span> Visão geral</button>
+        <button class="nav-link" data-tab="produtos"><span>▤</span> Produtos</button>
+        <button class="nav-link" data-tab="movimentacoes"><span>⇅</span> Movimentações</button>
+        <button class="nav-link" data-tab="sobre"><span>ⓘ</span> Sobre o sistema</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="mini-pulse"></div><div><strong>Ambiente local</strong><small>Dados neste navegador</small></div></div>
+    </aside>
+    <div class="page">
+      <header class="topbar"><div class="breadcrumbs">Workspace <span>/</span> <strong id="crumb">Visão geral</strong></div><div class="top-right"><span class="pill demo">● Demonstração</span><span class="avatar">SL</span></div></header>
+      <main class="main">
+        <section class="hero"><div><div class="eyebrow">SISTEMA DE GESTÃO · VERSÃO 1.4</div><h1 id="page-title">Visão geral do estoque</h1><p id="page-description">Acompanhe os produtos, o saldo disponível e as últimas movimentações.</p></div><div class="hero-actions"><button class="button ghost" id="reset-btn" title="Voltar aos dados iniciais">↻ Restaurar dados</button><button class="button primary" id="add-btn">＋ Novo produto</button></div></section>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        <section class="tab-content" id="tab-inicio">
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-heading">Produtos cadastrados <span class="stat-icon">▤</span></div><div class="stat-number" id="metric-products">-</div><div class="stat-caption">Itens no catálogo</div></div>
+            <div class="stat-card"><div class="stat-heading">Unidades em estoque <span class="stat-icon">◈</span></div><div class="stat-number" id="metric-units">-</div><div class="stat-caption">Somatório das quantidades</div></div>
+            <div class="stat-card"><div class="stat-heading">Valor em estoque <span class="stat-icon">R$</span></div><div class="stat-number" id="metric-value">-</div><div class="stat-caption">Avaliação do estoque atual</div></div>
+            <div class="stat-card"><div class="stat-heading">Produtos com alerta <span class="stat-icon warn">!</span></div><div class="stat-number" id="metric-alerts">-</div><div class="stat-caption">Itens abaixo do nível recomendado</div></div>
+          </div>
+          <div class="two-cols"><div class="panel"><div class="panel-head"><div><h2>Estoque em atenção</h2><p>Produtos que podem exigir reposição.</p></div><span class="tag blue">Acompanhamento</span></div><div id="low-stock-list" class="low-list"></div></div>
+          <div class="panel"><div class="panel-head"><div><h2>Últimas movimentações</h2><p>Atividades recentes registradas.</p></div><button class="text-button" data-open-tab="movimentacoes">Ver todas →</button></div><div id="recent-movements" class="movement-list"></div></div></div>
+        </section>
+        <section class="tab-content hidden" id="tab-produtos">
+          <div class="panel"><div class="panel-head spaced"><div><h2>Catálogo de produtos</h2><p>Gerencie os itens disponíveis.</p></div><button class="button ghost compact" id="export-btn">⇩ Exportar CSV</button></div>
+          <div class="filters"><label class="searchbox"><span>⌕</span><input id="search-input" type="search" placeholder="Buscar produto ou código" aria-label="Buscar produto ou código"></label><select id="category-filter" aria-label="Filtrar categoria"><option value="">Todas as categorias</option><option value="Informática">Informática</option><option value="Escritório">Escritório</option><option value="Acessórios">Acessórios</option></select></div>
+          <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Valor unitário</th><th>Em estoque</th><th>Situação</th><th>Ações</th></tr></thead><tbody id="product-table"></tbody></table></div>
+          <div class="table-footer"><span id="table-summary"></span><span>StockLab • catálogo local</span></div></div>
+        </section>
+        <section class="tab-content hidden" id="tab-movimentacoes"><div class="panel"><div class="panel-head"><div><h2>Histórico de movimentações</h2><p>Entradas e saídas registradas na aplicação.</p></div><button class="button primary compact" id="move-btn">＋ Registrar movimentação</button></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Operação</th><th>Quantidade</th><th>Observação</th></tr></thead><tbody id="movement-table"></tbody></table></div></div></section>
+        <section class="tab-content hidden" id="tab-sobre"><div class="panel info-panel"><div class="label-overline">SOBRE O STOCKLAB</div><h2>Uma solução simples para pequenos estoques</h2><p>O StockLab é um sistema fictício de controle de produtos para um comércio de bairro. Esta versão foi disponibilizada à equipe que assumirá a continuidade do projeto.</p><div class="info-grid"><div><b>Versão</b><span>1.4 (demonstração)</span></div><div><b>Armazenamento</b><span>Local neste navegador</span></div><div><b>Público</b><span>Operadores e gestores</span></div><div><b>Manutenção</b><span>Nova equipe de projeto</span></div></div><h3>Solicitação da empresa</h3><p>A empresa deseja melhorar a confiabilidade das informações, reduzir dificuldades operacionais e planejar a próxima versão. A equipe precisa conhecer o produto antes de propor alterações.</p><div class="note">Esta aplicação é um cenário de aprendizagem. Nenhum dado é enviado para servidores externos.</div></div></section>
+        <footer>StockLab © 2026 · Software fictício para atividade educacional</footer>
+      </main>
+    </div>
+  </div>
+  <dialog id="product-dialog" class="dialog"><form id="product-form" method="dialog" class="dialog-inner"><div class="dialog-top"><div><span class="label-overline">CATÁLOGO</span><h2 id="product-dialog-title">Novo produto</h2></div><button type="button" class="close-btn" data-close="product-dialog" aria-label="Fechar">✕</button></div><input type="hidden" id="product-id"><div class="form-grid"><label class="full">Nome do produto<input id="input-name" required maxlength="70" placeholder="Ex.: Mouse sem fio"></label><label>Código (SKU)<input id="input-sku" required maxlength="20" placeholder="Ex.: ACE-015"></label><label>Categoria<select id="input-category"><option>Informática</option><option>Escritório</option><option>Acessórios</option></select></label><label>Preço unitário (R$)<input id="input-price" type="number" step="0.01" min="0" required></label><label>Quantidade<input id="input-stock" type="number" step="1" min="0" required></label></div><div class="dialog-actions"><button type="button" class="button ghost" data-close="product-dialog">Cancelar</button><button type="submit" class="button primary">Salvar produto</button></div></form></dialog>
+  <dialog id="movement-dialog" class="dialog"><form id="movement-form" method="dialog" class="dialog-inner"><div class="dialog-top"><div><span class="label-overline">OPERAÇÃO</span><h2>Nova movimentação</h2></div><button type="button" class="close-btn" data-close="movement-dialog" aria-label="Fechar">✕</button></div><div class="form-grid"><label class="full">Produto<select id="move-product" required></select></label><label>Tipo de operação<select id="move-type"><option value="entrada">Entrada</option><option value="saida">Saída</option></select></label><label>Quantidade<input id="move-quantity" type="number" min="1" step="1" required value="1"></label><label class="full">Observação<input id="move-note" maxlength="80" placeholder="Ex.: Reposição do fornecedor"></label></div><div class="dialog-actions"><button type="button" class="button ghost" data-close="movement-dialog">Cancelar</button><button type="submit" class="button primary">Registrar movimentação</button></div></form></dialog>
+</body>
+</html>

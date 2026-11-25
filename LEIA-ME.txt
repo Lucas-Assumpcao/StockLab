@@ -1,0 +1,26 @@
+STOCKLAB - VERSAO 1.4 | SISTEMA FICTICIO PARA ANALISE DE PROJETO
+
+1) Extraia todo o arquivo ZIP para uma pasta no computador.
+2) Abra o arquivo index.html no navegador Google Chrome ou Microsoft Edge.
+3) Explore as paginas Visao geral, Produtos, Movimentacoes e Sobre o sistema.
+4) Caso precise reiniciar as informacoes, clique em "Restaurar dados".
+5) Os registros ficam apenas no navegador utilizado; nao ha servidor ou banco externo.
+
+SOBRE O PROJETO
+O sistema foi recebido de uma empresa anterior. A equipe atual devera compreender
+as funcionalidades existentes e elaborar um PLANO DE EVOLUCAO DO SOFTWARE.
+O objetivo NAO e desenvolver casos de teste formais nesta atividade.
+
+ARQUIVOS
+index.html - estrutura da interface
+styles.css - aparencia das telas
+app.js - regras da aplicacao e armazenamento local
+Roteiro_Alunos_StockLab.pdf - orientacoes da atividade
+
+AMBIENTE
+Pode abrir diretamente no navegador, sem instalar Node, banco de dados ou Docker.
+Em navegadores que restringem armazenamento local em arquivos, a turma pode
+utilizar a extensao Live Server do VS Code ou um servidor local HTTP simples.
+
+AVISO
+Software demonstrativo, sem autenticacao e sem backend; nao usar para dados reais.
